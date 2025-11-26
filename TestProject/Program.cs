@@ -43,6 +43,9 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 var app = builder.Build();
 
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5000";
+app.Urls.Add($"http://0.0.0.0:{port}");
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
