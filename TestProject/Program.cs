@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Identity;
+using Npgsql.EntityFrameworkCore.PostgreSQL;
 using Microsoft.EntityFrameworkCore;
 using TestProject.Data;
 using TestProject.Models;
@@ -17,7 +18,7 @@ var builder = WebApplication.CreateBuilder(args);
 string postgresConnectionString = builder.Configuration.GetConnectionString("PostgresConnection");
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 builder.Services.AddHostedService<TripSchedulerService>();
