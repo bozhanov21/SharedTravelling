@@ -2,11 +2,11 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy csproj first to restore dependencies
+# Copy csproj and restore separately
 COPY *.csproj ./
-RUN dotnet restore
+RUN dotnet restore --disable-parallel --no-cache
 
-# Copy the rest of the code
+# Copy remaining files and publish
 COPY . ./
 RUN dotnet publish -c Release -o /app/publish
 
@@ -14,11 +14,8 @@ RUN dotnet publish -c Release -o /app/publish
 FROM mcr.microsoft.com/dotnet/aspnet:8.0
 WORKDIR /app
 
-# ASP.NET Core listens on port 8080 for Koyeb
 ENV ASPNETCORE_URLS=http://+:8080
 
-# Copy published files from build stage
 COPY --from=build /app/publish .
 
-# Start the app
 ENTRYPOINT ["dotnet", "TestProject.dll"]
