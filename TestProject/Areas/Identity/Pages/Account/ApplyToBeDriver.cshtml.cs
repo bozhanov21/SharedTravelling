@@ -48,7 +48,7 @@ namespace TestProject.Areas.Identity.Pages.Account
             {
                 UserId = user.Id,
                 StatusRequest = RequestStatus.Pending,
-                Date = DateTime.Now
+                Date = DateTime.UtcNow
             };
             _context.RequestDrivers.Add(request);
             await _context.SaveChangesAsync();

@@ -33,7 +33,7 @@ namespace TestProject.Data
                 LastName = "Админов",
                 Position = "Driver",
                 PhoneNumber = "+359878123456",
-                DateOfDriverAcceptance = DateTime.Now.AddYears(-1),
+                DateOfDriverAcceptance = DateTime.UtcNow.AddYears(-1),
                 ImagePath = "/images/drivers/default-image-Driver.jpg",
                 EmailConfirmed = true
             };
@@ -52,16 +52,16 @@ namespace TestProject.Data
             var users = new List<(ApplicationUser User, string Password, string Role)>
             {
                 // Drivers
-                (new ApplicationUser { UserName = "ИванПетров", Email = "ivan.petrov@example.com", FirstName = "Иван", LastName = "Петров", Position = "Driver", PhoneNumber = "+359878234567", DateOfDriverAcceptance = DateTime.Now.AddMonths(-6), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "иванпетров", "Driver"),
-                (new ApplicationUser { UserName = "МарияИванова", Email = "maria.ivanova@example.com", FirstName = "Мария", LastName = "Иванова", Position = "Driver", PhoneNumber = "+359878345678", DateOfDriverAcceptance = DateTime.Now.AddMonths(-8), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "марияиванова", "Driver"),
-                (new ApplicationUser { UserName = "ГеоргиДимитров", Email = "georgi.dimitrov@example.com", FirstName = "Георги", LastName = "Димитров", Position = "Driver", PhoneNumber = "+359878456789", DateOfDriverAcceptance = DateTime.Now.AddMonths(-4), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "георгидимитров", "Driver"),
-                (new ApplicationUser { UserName = "ПетърСтоянов", Email = "petar.stoyanov@example.com", FirstName = "Петър", LastName = "Стоянов", Position = "Driver", PhoneNumber = "+359878567890", DateOfDriverAcceptance = DateTime.Now.AddMonths(-10), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "петърстоянов", "Driver"),
-                (new ApplicationUser { UserName = "ДимитърАнгелов", Email = "dimitar.angelov@example.com", FirstName = "Димитър", LastName = "Ангелов", Position = "Driver", PhoneNumber = "+359878678901", DateOfDriverAcceptance = DateTime.Now.AddMonths(-7), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "димитърангелов", "Driver"),
-                (new ApplicationUser { UserName = "НиколайКолев", Email = "nikolay.kolev@example.com", FirstName = "Николай", LastName = "Колев", Position = "Driver", PhoneNumber = "+359878789012", DateOfDriverAcceptance = DateTime.Now.AddMonths(-5), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "николайколев", "Driver"),
-                (new ApplicationUser { UserName = "ВикторияГеоргиева", Email = "viktoriya.georgieva@example.com", FirstName = "Виктория", LastName = "Георгиева", Position = "Driver", PhoneNumber = "+359878890123", DateOfDriverAcceptance = DateTime.Now.AddMonths(-3), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "викториягеоргиева", "Driver"),
-                (new ApplicationUser { UserName = "БориславИванов", Email = "borislav.ivanov@example.com", FirstName = "Борислав", LastName = "Иванов", Position = "Driver", PhoneNumber = "+359878901234", DateOfDriverAcceptance = DateTime.Now.AddMonths(-9), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "бориславиванов", "Driver"),
-                (new ApplicationUser { UserName = "КалинаПетрова", Email = "kalina.petrova@example.com", FirstName = "Калина", LastName = "Петрова", Position = "Driver", PhoneNumber = "+359879012345", DateOfDriverAcceptance = DateTime.Now.AddMonths(-2), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "калинапетрова", "Driver"),
-                (new ApplicationUser { UserName = "СтоянТодоров", Email = "stoyan.todorov@example.com", FirstName = "Стоян", LastName = "Тодоров", Position = "Driver", PhoneNumber = "+359879123456", DateOfDriverAcceptance = DateTime.Now.AddMonths(-11), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "стоянтодоров", "Driver"),
+                (new ApplicationUser { UserName = "ИванПетров", Email = "ivan.petrov@example.com", FirstName = "Иван", LastName = "Петров", Position = "Driver", PhoneNumber = "+359878234567", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-6), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "иванпетров", "Driver"),
+                (new ApplicationUser { UserName = "МарияИванова", Email = "maria.ivanova@example.com", FirstName = "Мария", LastName = "Иванова", Position = "Driver", PhoneNumber = "+359878345678", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-8), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "марияиванова", "Driver"),
+                (new ApplicationUser { UserName = "ГеоргиДимитров", Email = "georgi.dimitrov@example.com", FirstName = "Георги", LastName = "Димитров", Position = "Driver", PhoneNumber = "+359878456789", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-4), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "георгидимитров", "Driver"),
+                (new ApplicationUser { UserName = "ПетърСтоянов", Email = "petar.stoyanov@example.com", FirstName = "Петър", LastName = "Стоянов", Position = "Driver", PhoneNumber = "+359878567890", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-10), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "петърстоянов", "Driver"),
+                (new ApplicationUser { UserName = "ДимитърАнгелов", Email = "dimitar.angelov@example.com", FirstName = "Димитър", LastName = "Ангелов", Position = "Driver", PhoneNumber = "+359878678901", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-7), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "димитърангелов", "Driver"),
+                (new ApplicationUser { UserName = "НиколайКолев", Email = "nikolay.kolev@example.com", FirstName = "Николай", LastName = "Колев", Position = "Driver", PhoneNumber = "+359878789012", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-5), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "николайколев", "Driver"),
+                (new ApplicationUser { UserName = "ВикторияГеоргиева", Email = "viktoriya.georgieva@example.com", FirstName = "Виктория", LastName = "Георгиева", Position = "Driver", PhoneNumber = "+359878890123", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-3), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "викториягеоргиева", "Driver"),
+                (new ApplicationUser { UserName = "БориславИванов", Email = "borislav.ivanov@example.com", FirstName = "Борислав", LastName = "Иванов", Position = "Driver", PhoneNumber = "+359878901234", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-9), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "бориславиванов", "Driver"),
+                (new ApplicationUser { UserName = "КалинаПетрова", Email = "kalina.petrova@example.com", FirstName = "Калина", LastName = "Петрова", Position = "Driver", PhoneNumber = "+359879012345", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-2), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "калинапетрова", "Driver"),
+                (new ApplicationUser { UserName = "СтоянТодоров", Email = "stoyan.todorov@example.com", FirstName = "Стоян", LastName = "Тодоров", Position = "Driver", PhoneNumber = "+359879123456", DateOfDriverAcceptance = DateTime.UtcNow.AddMonths(-11), ImagePath = "/images/drivers/default-image-Driver.jpg" }, "стоянтодоров", "Driver"),
                 
                 // Tourists
                 (new ApplicationUser { UserName = "ЕленаМаркова", Email = "elena.markova@example.com", FirstName = "Елена", LastName = "Маркова", Position = "Tourist", PhoneNumber = "+359879234567" }, "еленамаркова", "Tourist"),
@@ -115,9 +115,9 @@ namespace TestProject.Data
                 var touristUsers = await userManager.GetUsersInRoleAsync("Tourist");
                 var pendingDriverRequests = new List<RequestDriver>
                 {
-                    new RequestDriver { UserId = touristUsers[0].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.Now.AddDays(-5) },
-                    new RequestDriver { UserId = touristUsers[1].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.Now.AddDays(-3) },
-                    new RequestDriver { UserId = touristUsers[2].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.Now.AddDays(-1) }
+                    new RequestDriver { UserId = touristUsers[0].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-5) },
+                    new RequestDriver { UserId = touristUsers[1].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-3) },
+                    new RequestDriver { UserId = touristUsers[2].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-1) }
                 };
 
                 await context.RequestDrivers.AddRangeAsync(pendingDriverRequests);
@@ -204,32 +204,32 @@ namespace TestProject.Data
                         {
                             status = TripStatus.Upcoming;
                         }
-                        departureTime = DateTime.Now.AddDays(random.Next(1, 15));
+                        departureTime = DateTime.UtcNow.AddDays(random.Next(1, 15));
                         returnTime = departureTime.AddHours(random.Next(2, 8));
                     }
                     else if (i < 25) // 10 booked trips
                     {
                         status = TripStatus.Booked;
-                        departureTime = DateTime.Now.AddDays(random.Next(1, 15));
+                        departureTime = DateTime.UtcNow.AddDays(random.Next(1, 15));
                         returnTime = departureTime.AddHours(random.Next(2, 8));
                         freeSeats = 0; // Booked trips have no free seats
                     }
                     else if (i < 35) // 10 ongoing trips
                     {
                         status = TripStatus.Ongoing;
-                        departureTime = DateTime.Now.AddDays(-random.Next(1, 3));
-                        returnTime = DateTime.Now.AddDays(random.Next(10, 15)); // 2-week long trips
+                        departureTime = DateTime.UtcNow.AddDays(-random.Next(1, 3));
+                        returnTime = DateTime.UtcNow.AddDays(random.Next(10, 15)); // 2-week long trips
                     }
                     else // 15 finished trips
                     {
                         status = TripStatus.Finished;
-                        departureTime = DateTime.Now.AddDays(-random.Next(15, 60));
+                        departureTime = DateTime.UtcNow.AddDays(-random.Next(15, 60));
                         returnTime = departureTime.AddHours(random.Next(2, 8));
                     }
 
                     // Calculate NextRunDate based on departureTime and recurrenceInterval
                     DateTime? nextRunDate = null;
-                    DateTime nextStart = DateTime.Now;
+                    DateTime nextStart = DateTime.UtcNow;
                     if (isRecurring)
                     {
                         // Parse days from recurrenceInterval
@@ -278,17 +278,17 @@ namespace TestProject.Data
                             // Try a different time period
                             if (status == TripStatus.Ongoing)
                             {
-                                departureTime = DateTime.Now.AddDays(-random.Next(1, 3)).AddHours(random.Next(24));
+                                departureTime = DateTime.UtcNow.AddDays(-random.Next(1, 3)).AddHours(random.Next(24));
                                 returnTime = departureTime.AddDays(random.Next(1, 3));
                             }
                             else if (status == TripStatus.Upcoming || status == TripStatus.Booked)
                             {
-                                departureTime = DateTime.Now.AddDays(random.Next(1, 30));
+                                departureTime = DateTime.UtcNow.AddDays(random.Next(1, 30));
                                 returnTime = departureTime.AddHours(random.Next(2, 8));
                             }
                             else // Finished
                             {
-                                departureTime = DateTime.Now.AddDays(-random.Next(15, 60));
+                                departureTime = DateTime.UtcNow.AddDays(-random.Next(15, 60));
                                 returnTime = departureTime.AddHours(random.Next(2, 8));
                             }
 
@@ -332,7 +332,7 @@ namespace TestProject.Data
                         PlateNumber = plateNumber,
                         ImagePath = "/images/trips/default-image.jpg",
                         StatusTrip = status,
-                        CreatedDate = DateTime.Now.AddDays(-random.Next(1, 90)),
+                        CreatedDate = DateTime.UtcNow.AddDays(-random.Next(1, 90)),
                         IsRecurring = isRecurring,
                         RecurrenceInterval = recurrenceInterval,
                         NextRunDate = nextRunDate,
@@ -378,7 +378,7 @@ namespace TestProject.Data
                     // Create different status trips for admin
                     if (status == TripStatus.Upcoming)
                     {
-                        departureTime = DateTime.Now.AddDays(random.Next(1, 15));
+                        departureTime = DateTime.UtcNow.AddDays(random.Next(1, 15));
                         returnTime = departureTime.AddHours(random.Next(2, 8));
                         if (freeSeats == 0)
                         {
@@ -388,8 +388,8 @@ namespace TestProject.Data
                     else if (status == TripStatus.Ongoing)
                     {
                         // Make sure it doesn't overlap with any existing admin trips
-                        departureTime = DateTime.Now.AddDays(-random.Next(1, 3));
-                        returnTime = DateTime.Now.AddDays(random.Next(1, 3));
+                        departureTime = DateTime.UtcNow.AddDays(-random.Next(1, 3));
+                        returnTime = DateTime.UtcNow.AddDays(random.Next(1, 3));
 
                         // Check for overlap with existing admin trips
                         bool hasOverlap = false;
@@ -405,20 +405,20 @@ namespace TestProject.Data
                         // If overlap, adjust dates
                         if (hasOverlap)
                         {
-                            departureTime = DateTime.Now.AddDays(3); // Set to future date
+                            departureTime = DateTime.UtcNow.AddDays(3); // Set to future date
                             returnTime = departureTime.AddDays(2);
                             status = TripStatus.Upcoming; // Change status to upcoming
                         }
                     }
                     else // Finished
                     {
-                        departureTime = DateTime.Now.AddDays(-random.Next(15, 60));
+                        departureTime = DateTime.UtcNow.AddDays(-random.Next(15, 60));
                         returnTime = departureTime.AddHours(random.Next(2, 8));
                     }
 
                     // Calculate NextRunDate
                     DateTime? nextRunDate = null;
-                    DateTime nextStart = DateTime.Now;
+                    DateTime nextStart = DateTime.UtcNow;
                     if (isRecurring)
                     {
                         int days = int.Parse(recurrenceInterval.Split('.')[0]);
@@ -440,7 +440,7 @@ namespace TestProject.Data
                         PlateNumber = plateNumber,
                         ImagePath = "/images/trips/default-image.jpg",
                         StatusTrip = status,
-                        CreatedDate = DateTime.Now.AddDays(-random.Next(1, 90)),
+                        CreatedDate = DateTime.UtcNow.AddDays(-random.Next(1, 90)),
                         IsRecurring = isRecurring,
                         RecurrenceInterval = recurrenceInterval,
                         NextRunDate = nextRunDate,
@@ -620,7 +620,7 @@ namespace TestProject.Data
                                 TripId = trip.Id,
                                 UserId = requester.Id,
                                 StatusRequest = RequestStatus.Pending,
-                                Date = DateTime.Now.AddDays(-random.Next(1, 5)),
+                                Date = DateTime.UtcNow.AddDays(-random.Next(1, 5)),
                                 NumberOfSeats = random.Next(1, Math.Min(3, trip.FreeSeats + 1)) // 1 or 2 seats, not exceeding free seats
                             };
                             requests.Add(request);
@@ -656,7 +656,7 @@ namespace TestProject.Data
                             TripId = trip.Id,
                             UserId = admin.Id,
                             StatusRequest = RequestStatus.Pending,
-                            Date = DateTime.Now.AddDays(-random.Next(1, 3)),
+                            Date = DateTime.UtcNow.AddDays(-random.Next(1, 3)),
                             NumberOfSeats = 1
                         };
                         requests.Add(request);
@@ -681,7 +681,7 @@ namespace TestProject.Data
                             TripId = upcomingTrips[0].Id,
                             UserId = tourist.Id,
                             StatusRequest = RequestStatus.Pending,
-                            Date = DateTime.Now.AddDays(-2),
+                            Date = DateTime.UtcNow.AddDays(-2),
                             NumberOfSeats = 1
                         };
                         requests.Add(request1);
@@ -692,7 +692,7 @@ namespace TestProject.Data
                             TripId = upcomingTrips[1].Id,
                             UserId = tourist.Id,
                             StatusRequest = RequestStatus.Pending,
-                            Date = DateTime.Now.AddDays(-1),
+                            Date = DateTime.UtcNow.AddDays(-1),
                             NumberOfSeats = 1
                         };
                         requests.Add(request2);

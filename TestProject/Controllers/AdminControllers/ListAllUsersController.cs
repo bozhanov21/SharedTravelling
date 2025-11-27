@@ -133,7 +133,7 @@ public class ListAllUsersController : Controller
 
         if (newRole == "Driver" && !currentRoles.Contains("Driver"))
         {
-            user.DateOfDriverAcceptance = DateTime.Now;
+            user.DateOfDriverAcceptance = DateTime.UtcNow;
 
             var requestDrivers = await _context.RequestDrivers.Where(rd => rd.UserId == user.Id).ToListAsync();
 

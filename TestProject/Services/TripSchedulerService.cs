@@ -22,12 +22,12 @@ namespace TestProject.Services
         {
             while (!stoppingToken.IsCancellationRequested)
             {
-                _logger.LogInformation("Checking for recurring trips at {Time}", DateTime.Now);
+                _logger.LogInformation("Checking for recurring trips at {Time}", DateTime.UtcNow);
 
                 using (var scope = _services.CreateScope())
                 {
                     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
-                    var Now = DateTime.Now;
+                    var Now = DateTime.UtcNow;
 
                     var allRecurringTrips = await context.Trips
                      .Where(t => t.IsRecurring && t.RecurrenceInterval != "00:00:00" && t.NextRunDate.HasValue)

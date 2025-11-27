@@ -54,16 +54,16 @@ namespace TestProject.Models
 
         public TripStatus StatusTrip { get; set; }
 
-        public DateTime CreatedDate { get; set; } = DateTime.Now;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
 
-        public DateTime tripSchedule { get; set; } = DateTime.Now;
-        public DateTime NextStart { get; set; } = DateTime.Now;
+        public DateTime tripSchedule { get; set; } = DateTime.UtcNow;
+        public DateTime NextStart { get; set; } = DateTime.UtcNow;
 
         public bool IsRecurring { get; set; }
 
         public String? RecurrenceInterval { get; set; } = "00:00:00";
 
-        public DateTime? NextRunDate { get; set; } = DateTime.Now;
+        public DateTime? NextRunDate { get; set; } = DateTime.UtcNow;
 
         public ICollection<TripParticipant>? TripParticipants { get; set; }
         public ICollection<Request>? Requests { get; set; }

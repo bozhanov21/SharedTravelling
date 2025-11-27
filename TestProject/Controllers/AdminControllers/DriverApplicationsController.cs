@@ -66,7 +66,7 @@ public class DriverApplicationsController : Controller
 
         // Update RequestDriver status
         request.StatusRequest = RequestStatus.Accepted;
-        user.DateOfDriverAcceptance = DateTime.Now;
+        user.DateOfDriverAcceptance = DateTime.UtcNow;
 
         user.Position = "Driver";
         

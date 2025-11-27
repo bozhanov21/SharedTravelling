@@ -29,7 +29,7 @@ public class TripStatusUpdaterService : BackgroundService
                 {
                     var context = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
 
-                    var now = DateTime.Now;
+                    var now = DateTime.UtcNow;
 
                     var ongoingTrips = context.Trips
                         .Where(t => t.DepartureTime <= now && t.StatusTrip == TripStatus.Upcoming)

@@ -96,7 +96,7 @@ namespace TestProject.Controllers
                 TripId = tripId,
                 UserId = userId,
                 StatusRequest = RequestStatus.Pending,
-                Date = DateTime.Now,
+                Date = DateTime.UtcNow,
                 NumberOfSeats = numberOfSeats 
             };
 

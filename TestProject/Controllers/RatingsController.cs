@@ -99,7 +99,7 @@ namespace TestProject.Controllers
             }
 
             rating.UserId = user.Id;
-            rating.Date = DateTime.Now;
+            rating.Date = DateTime.UtcNow;
             rating.TripId = tripId;
 
             _context.Ratings.Add(rating);

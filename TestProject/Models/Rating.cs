@@ -23,7 +23,7 @@ namespace TestProject.Models
 
         public string? Comment { get; set; }
 
-        public DateTime Date { get; set; } = DateTime.Now;
+        public DateTime Date { get; set; } = DateTime.UtcNow;
 
     }
 }
