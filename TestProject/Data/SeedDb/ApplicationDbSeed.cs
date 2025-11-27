@@ -46,6 +46,14 @@ namespace TestProject.Data
                     await userManager.AddToRoleAsync(adminUser, "Admin");
                     await userManager.AddToRoleAsync(adminUser, "Driver");
                 }
+                  else
+    {
+        Console.WriteLine("Failed to create admin user:");
+        foreach (var error in result.Errors)
+        {
+            Console.WriteLine($" - {error.Code}: {error.Description}");
+        }
+    }
             }
 
             // Create regular users if they don't exist
@@ -112,13 +120,15 @@ namespace TestProject.Data
             // Create driver requests for some tourists (pending driver applications)
             if (!context.RequestDrivers.Any())
             {
-                var touristUsers = await userManager.GetUsersInRoleAsync("Tourist");
-                var pendingDriverRequests = new List<RequestDriver>
-                {
-                    new RequestDriver { UserId = touristUsers[0].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-5) },
-                    new RequestDriver { UserId = touristUsers[1].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-3) },
-                    new RequestDriver { UserId = touristUsers[2].Id, StatusRequest = RequestStatus.Pending, Date = DateTime.UtcNow.AddDays(-1) }
-                };
+                var touristUsers = (await userManager.GetUsersInRoleAsync("Tourist")).ToList();
+                var pendingDriverRequests = touristUsers.Take(3)
+                    .Select((user, index) => new RequestDriver
+                    {
+                        UserId = user.Id,
+                        StatusRequest = RequestStatus.Pending,
+                        Date = DateTime.UtcNow.AddDays(-(5 - 2 * index)) // -5, -3, -1
+                    }).ToList();
+
 
                 await context.RequestDrivers.AddRangeAsync(pendingDriverRequests);
                 await context.SaveChangesAsync();
@@ -268,6 +278,13 @@ namespace TestProject.Data
                     // If no driver is available without overlap, adjust the dates
                     if (driverId == null)
                     {
+
+                         if (shuffledDrivers.Count == 0)
+                            {
+                                // Still no drivers? Skip this trip
+                                continue;
+                            }
+
                         // Take the first driver and adjust dates to avoid overlap
                         driverId = shuffledDrivers[0].Id;
 
@@ -467,6 +484,12 @@ namespace TestProject.Data
                 var tripParticipants = new List<TripParticipant>();
                 var requests = new List<Request>();
 
+                if (!drivers.Any())
+                {
+                    Console.WriteLine("No drivers available to assign trips. Skipping trip creation.");
+                    return; // exit the trip creation block
+                }
+
                 // Dictionary to track user's trip participations and their time periods
                 var userParticipations = new Dictionary<string, List<(DateTime Start, DateTime End)>>();
 
@@ -490,11 +513,11 @@ namespace TestProject.Data
 
                     int addedParticipants = 0;
 
-                    foreach (var participant in potentialParticipants)
-                    {
-                        if (addedParticipants >= participantsCount)
-                            break;
+                    var maxParticipants = Math.Min(participantsCount, potentialParticipants.Count);
+                    var selectedParticipants = potentialParticipants.Take(maxParticipants);
 
+                    foreach (var participant in selectedParticipants)
+                    {
                         // Check if this user has any overlapping trips
                         bool hasOverlap = false;
                         foreach (var (start, end) in userParticipations[participant.Id])
@@ -531,15 +554,17 @@ namespace TestProject.Data
                             // Add this participation to the user's list
                             userParticipations[participant.Id].Add((trip.DepartureTime, trip.ReturnTime));
 
-                            addedParticipants++;
+                            addedParticipants++; // optional, if you want to track count
                         }
                     }
+
                 }
 
                 // Make admin participate in some trips
                 var tripsForAdmin = trips
                     .Where(t => t.DriversId != admin.Id && (t.StatusTrip == TripStatus.Finished || t.StatusTrip == TripStatus.Ongoing))
                     .OrderBy(x => random.Next())
+                    .Take(Math.Min(1, trips.Count()))
                     .ToList();
 
                 foreach (var trip in tripsForAdmin)
@@ -598,7 +623,11 @@ namespace TestProject.Data
                         .Take(requestsCount)
                         .ToList();
 
-                    foreach (var requester in potentialRequesters)
+                    var maxRequesters = Math.Min(requestsCount, potentialRequesters.Count);
+                    var finalRequesters = potentialRequesters.Take(maxRequesters).ToList();
+
+
+                    foreach (var requester in finalRequesters)
                     {
                         // For pending requests, we'll check for overlaps with accepted trips
                         bool hasOverlap = false;
@@ -737,7 +766,7 @@ namespace TestProject.Data
                 foreach (var trip in finishedTrips)
                 {
                     // For each participant in the trip, create a rating
-                    foreach (var participant in trip.TripParticipants)
+                    foreach (var participant in trip.TripParticipants.Where(p => !string.IsNullOrEmpty(p.UserId)))
                     {
                         // 80% chance to leave a rating
                         if (random.Next(10) < 8)
