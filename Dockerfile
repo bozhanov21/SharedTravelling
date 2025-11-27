@@ -2,12 +2,13 @@
 FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 WORKDIR /src
 
-# Copy project file(s) and restore
-COPY *.csproj .
+# Copy project file and restore
+COPY TestProject/*.csproj ./TestProject/
+WORKDIR /src/TestProject
 RUN dotnet restore
 
 # Copy everything else and build
-COPY . .
+COPY TestProject/. .
 RUN dotnet build -c Release -o /app/build
 
 # Publish stage
