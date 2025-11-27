@@ -44,14 +44,6 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 var app = builder.Build();
 
-using (var conn = new NpgsqlConnection(postgresConnectionString))
-{
-    conn.Open();
-    using var cmd = new NpgsqlCommand("SELECT COUNT(*) FROM MyTable", conn);
-    var count = (long)cmd.ExecuteScalar();
-    Console.WriteLine($"Rows in PostgreSQL table: {count}");
-}
-
 
 using (var scope = app.Services.CreateScope())
 {
