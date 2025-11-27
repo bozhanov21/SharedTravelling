@@ -4,7 +4,7 @@ using System.Text.RegularExpressions;
 
 public class CustomEmailAttribute : ValidationAttribute
 {
-    protected override ValidationResult IsValid(object value, ValidationContext validationContext)
+    protected override ValidationResult IsValid(object? value, ValidationContext validationContext)
     {
         if (value == null || string.IsNullOrWhiteSpace(value.ToString()))
         {
