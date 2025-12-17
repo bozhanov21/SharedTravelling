@@ -1,3 +1,12 @@
+## 🎯 Project Overview
+
+This web application addresses the growing need for affordable and sustainable travel options by creating a platform where:
+- **Drivers** can post available seats in their vehicles for specific routes
+- **Passengers** can search and book seats for their desired destinations
+- **Both** benefit from reduced travel costs and environmental impact
+
+Built entirely in Bulgarian to serve the local market, the platform handles the complete lifecycle of shared trips from creation to completion.
+
 👤 Туристи
 Потребителско име: ЕленаМаркова  Парола: еленамаркова
 
