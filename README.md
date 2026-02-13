@@ -134,7 +134,8 @@ GitHub ── CI/CD ──> Koyeb ──> Container
 
 ## License
 
-This project is open-source and free to use, modify, and learn from.
+This project is licensed under the MIT License.
+See the LICENSE file for details.
 
 ---
 
